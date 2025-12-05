@@ -1,4 +1,4 @@
-/// Weather model representing the current weather data from OpenWeatherMap API
+
 class Weather {
   final String cityName;
   final String country;
@@ -30,7 +30,7 @@ class Weather {
     required this.visibility,
   });
 
-  /// Factory constructor to parse JSON from OpenWeatherMap API
+
   factory Weather.fromJson(Map<String, dynamic> json) {
     return Weather(
       cityName: json['name'] ?? 'Unknown',
@@ -49,7 +49,6 @@ class Weather {
     );
   }
 
-  /// Convert Weather to JSON
   Map<String, dynamic> toJson() {
     return {
       'cityName': cityName,

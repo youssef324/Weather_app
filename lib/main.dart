@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/index.dart';
 import 'providers/weather_provider.dart';
 import 'providers/app_data_provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Load environment variables from .env (if present)
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 

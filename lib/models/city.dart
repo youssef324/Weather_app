@@ -1,4 +1,4 @@
-/// City model for storing city information in favorites
+
 class City {
   final String name;
   final String country;
@@ -12,7 +12,6 @@ class City {
     required this.longitude,
   });
 
-  /// Convert City to JSON for storage
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -22,7 +21,7 @@ class City {
     };
   }
 
-  /// Factory constructor to create City from JSON
+
   factory City.fromJson(Map<String, dynamic> json) {
     return City(
       name: json['name'] ?? '',
