@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../providers/app_data_provider.dart';
 import '../models/app_settings.dart';
 
-/// Settings screen for app configuration
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -16,7 +15,6 @@ class SettingsScreen extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              // Temperature unit section
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -69,8 +67,6 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // About section
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -108,8 +104,6 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Settings info
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(

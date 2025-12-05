@@ -3,22 +3,11 @@ import 'dart:convert';
 import '../models/weather.dart';
 import '../constants/api_config.dart';
 
-/// API service for interacting with OpenWeatherMap API
 class WeatherApiService {
-  // API key from config
   static const String apiKey = openWeatherMapApiKey;
   static const String baseUrl =
       'https://api.openweathermap.org/data/2.5/weather';
 
-  /// Fetch weather data by city name
-  ///
-  /// Parameters:
-  ///   - cityName: Name of the city to fetch weather for
-  ///   - units: Temperature unit ('metric' for Celsius, 'imperial' for Fahrenheit)
-  ///
-  /// Returns: Weather object containing weather data
-  ///
-  /// Throws: Exception with descriptive error message
   static Future<Weather> getWeatherByCity(
     String cityName, {
     String units = 'metric',
@@ -109,13 +98,11 @@ class WeatherApiService {
     }
   }
 
-  /// Get URL for weather icon from OpenWeatherMap
   static String getWeatherIconUrl(String iconCode) {
     return 'https://openweathermap.org/img/wn/$iconCode@4x.png';
   }
 }
 
-/// Custom exception for timeout errors
 class TimeoutException implements Exception {
   final String message;
   TimeoutException(this.message);
@@ -123,7 +110,6 @@ class TimeoutException implements Exception {
   String toString() => message;
 }
 
-/// Custom exception for socket errors
 class SocketException implements Exception {
   final String message;
   SocketException(this.message);

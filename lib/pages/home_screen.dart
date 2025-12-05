@@ -5,7 +5,6 @@ import '../providers/app_data_provider.dart';
 import '../widgets/weather_details_card.dart';
 import '../models/city.dart';
 
-/// Home/Search screen for searching and displaying weather
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -30,15 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  /// Load search history from preferences
   Future<void> _loadSearchHistory() async {
-    // In a real app, you would load this from SharedPreferences
     setState(() {
       _searchHistory = ['London', 'New York', 'Tokyo', 'Paris', 'Sydney'];
     });
   }
 
-  /// Handle search
   void _handleSearch(String cityName) {
     if (cityName.isEmpty) {
       ScaffoldMessenger.of(
@@ -47,7 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
 
-    // Add to history
     if (!_searchHistory.contains(cityName)) {
       _searchHistory.insert(0, cityName);
       if (_searchHistory.length > 5) {
@@ -55,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
 
-    // Fetch weather
     context.read<WeatherProvider>().fetchWeatherByCity(cityName);
     _searchController.clear();
   }
@@ -72,7 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Search bar
               TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
@@ -100,7 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 24),
 
-              // Search button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -115,7 +107,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const SizedBox(height: 32),
 
-              // Search history
               if (_searchHistory.isNotEmpty)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +135,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
 
-              // Weather display or empty state
               Consumer<WeatherProvider>(
                 builder: (context, weatherProvider, _) {
                   if (weatherProvider.isLoading) {

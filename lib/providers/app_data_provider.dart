@@ -3,18 +3,15 @@ import '../models/city.dart';
 import '../models/app_settings.dart';
 import '../services/storage_service.dart';
 
-/// Provider for managing favorites and settings
 class AppDataProvider extends ChangeNotifier {
   List<City> _favoriteCities = [];
   AppSettings _settings = AppSettings();
   bool _isLoading = false;
 
-  // Getters
   List<City> get favoriteCities => _favoriteCities;
   AppSettings get settings => _settings;
   bool get isLoading => _isLoading;
 
-  /// Initialize data from storage
   Future<void> initializeData() async {
     _isLoading = true;
     notifyListeners();
@@ -29,8 +26,6 @@ class AppDataProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
-  /// Add city to favorites
   Future<void> addFavorite(City city) async {
     final added = await StorageService.addFavoriteCity(city);
     if (added) {
@@ -39,27 +34,20 @@ class AppDataProvider extends ChangeNotifier {
     }
   }
 
-  /// Remove city from favorites
   Future<void> removeFavorite(String cityName, String country) async {
     await StorageService.removeFavoriteCity(cityName, country);
     _favoriteCities.removeWhere((c) => c.name == cityName && c.country == country);
     notifyListeners();
   }
-
-  /// Check if city is favorite
   bool isFavorite(String cityName, String country) {
     return _favoriteCities
         .any((c) => c.name == cityName && c.country == country);
   }
-
-  /// Update settings
   Future<void> updateSettings(AppSettings settings) async {
     _settings = settings;
     await StorageService.saveSettings(settings);
     notifyListeners();
   }
-
-  /// Toggle temperature unit
   Future<void> toggleTemperatureUnit() async {
     final newSettings = AppSettings(
       useCelsius: !_settings.useCelsius,

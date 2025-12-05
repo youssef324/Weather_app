@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import '../providers/weather_provider.dart';
 import '../providers/app_data_provider.dart';
 
-/// Favorites screen showing list of saved favorite cities
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({Key? key}) : super(key: key);
 
@@ -90,11 +89,9 @@ class FavoritesScreen extends StatelessWidget {
                     },
                   ),
                   onTap: () {
-                    // Fetch weather for this city
                     context.read<WeatherProvider>().fetchWeatherByCity(
                       city.name,
                     );
-                    // Navigate to home screen to show weather
                     Navigator.pop(context);
                   },
                 ),

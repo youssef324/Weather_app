@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// Main navigation screen with bottom navigation bar
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 

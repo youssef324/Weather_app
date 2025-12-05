@@ -1,4 +1,3 @@
-// Barrel file for pages - exports all page files
 library;
 
 export 'home_screen.dart';
