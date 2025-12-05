@@ -6,7 +6,7 @@ import '../widgets/weather_details_card.dart';
 import '../models/city.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

@@ -9,10 +9,10 @@ class WeatherDetailsCard extends StatelessWidget {
   final AppSettings settings;
 
   const WeatherDetailsCard({
-    Key? key,
+    super.key,
     required this.weather,
     required this.settings,
-  }) : super(key: key);
+  });
 
   /// Format Unix timestamp to local time
   String _formatTime(int unixTimestamp, int timezone) {
