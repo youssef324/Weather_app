@@ -5,25 +5,20 @@ import '../models/weather.dart';
 import '../constants/api_config.dart';
 
 class WeatherApiService {
-  /// Resolve API key using multiple sources (priority order):
-  /// 1. Compile-time --dart-define (via `lib/constants/api_config.dart`)
-  /// 2. Runtime .env file loaded by `flutter_dotenv` (dotenv.env)
-  /// If not found, throws a clear Exception.
   static String get apiKey {
-    // 1) Check compile-time dart-define value
+    
     if (isApiKeyConfigured() &&
         openWeatherMapApiKey.isNotEmpty &&
         openWeatherMapApiKey != 'YOUR_API_KEY_HERE') {
       return openWeatherMapApiKey;
     }
 
-    // 2) Check runtime .env loaded via flutter_dotenv
     final envKey = dotenv.env['OPENWEATHERMAP_API_KEY'];
     if (envKey != null && envKey.isNotEmpty && envKey != 'null') {
       return envKey;
     }
 
-    // Not found — throw a clear error so callers can show a helpful message
+
     throw Exception(
       'OpenWeatherMap API key not found. Provide it via --dart-define (OPENWEATHERMAP_API_KEY) or a .env file.\n'
       'Examples:\n'
@@ -40,7 +35,7 @@ class WeatherApiService {
     String units = 'metric',
   }) async {
     try {
-      // تحقق من الـ API Key أولاً
+   
       if (apiKey.isEmpty || apiKey == 'null') {
         throw Exception('API Key not found. Please check your .env file');
       }
