@@ -2,8 +2,6 @@
 
 Lightweight, modern Flutter weather app demonstrating a clean architecture, Provider state management, local persistence, and secure API-key handling for OpenWeatherMap.
 
-![App Preview](assets/preview.png)
-
 Key highlights:
 
 - Fast search by city name
