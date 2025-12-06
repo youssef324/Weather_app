@@ -25,7 +25,7 @@ Quick setup:
 1. Clone the repo:
 
 ```powershell
-git clone <your-repo-url>
+git clone https://github.com/youssef324/Weather_app
 cd Weather_app
 ```
 
